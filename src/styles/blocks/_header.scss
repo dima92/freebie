@@ -1,0 +1,124 @@
+@use "sass:color";
+@use "../helpers" as *;
+@use "../variables" as *;
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  padding-top: to-rem(79);
+
+  &__container {
+    @include flex(row, space-between, center);
+  }
+
+  &__logo {
+    font-weight: 900;
+    font-size: to-rem(36);
+    line-height: 0.83;
+    letter-spacing: 0.06em;
+
+    @include hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__nav {
+    @include respond-to("tablet") {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      max-width: to-rem(320);
+      height: 100vh;
+      background-color: $grey-dark-color;
+      padding: to-rem(100) to-rem(30) to-rem(40);
+      z-index: 99;
+      overflow-y: auto;
+      transform: translateX(100%);
+      transition: transform $transition-duration ease-in-out;
+
+      &.is-open {
+        transform: translateX(0);
+      }
+    }
+  }
+
+  &__list {
+    @include flex(row, space-between, center, to-rem(58));
+
+    @include respond-to("tablet") {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: to-rem(24);
+    }
+  }
+
+  &__link {
+    position: relative;
+    font-size: to-rem(14);
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    white-space: nowrap;
+
+    &::before {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: to-rem(-3);
+      width: to-rem(18);
+      height: to-rem(2);
+      background-color: $green-color;
+      transition: width $transition-duration ease-in-out;
+    }
+
+    @include hover {
+      color: $green-color;
+    }
+
+    &:hover::before {
+      width: 100%;
+    }
+  }
+
+  &__burger {
+    display: none;
+
+    @include respond-to("tablet") {
+      @include flex(column, space-between, center);
+      width: to-rem(28);
+      height: to-rem(20);
+      background: transparent;
+      border: none;
+      z-index: 100;
+      cursor: pointer;
+
+      span {
+        display: block;
+        width: 100%;
+        height: to-rem(2);
+        background-color: $white-color;
+        transition:
+          transform $transition-duration ease-in-out,
+          opacity $transition-duration ease-in-out,
+          width $transition-duration ease-in-out;
+        transform-origin: center;
+      }
+
+      &.is-open {
+        span:nth-child(1) {
+          transform: translateY(to-rem(9)) rotate(45deg);
+        }
+        span:nth-child(2) {
+          opacity: 0;
+          transform: scaleX(0);
+        }
+        span:nth-child(3) {
+          transform: translateY(to-rem(-9)) rotate(-45deg);
+        }
+      }
+    }
+  }
+}

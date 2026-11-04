@@ -1,0 +1,29 @@
+@use "helpers/functions" as *;
+
+// Сетка
+$container-width: 1185;
+$container-padding-x: 15;
+
+// Анимации
+$transition-duration: 0.3s;
+$transition-base: all $transition-duration ease-in-out;
+
+// Шрифты
+$font-family: "Oswald", sans-serif;
+$second-family: "Open Sans", sans-serif;
+
+// ==========================================================================
+// ЦВЕТОВАЯ ПАЛИТРА (UI-KIT) — ПРОЕКТ FREEBIE
+// ==========================================================================
+
+$white-color: #fff;
+$black-color: #000;
+$bg-color: #fbfbfb;
+$grey-light-color: #504e4e;
+$grey-dark-color: #252525;
+$grey-color: #333;
+$grey-text-color: #777;
+$grey-2-color: #353535;
+$grey-alt-color: #5b5858;
+$green-color: #4caf50;
+$green-light-color: #70bf73;

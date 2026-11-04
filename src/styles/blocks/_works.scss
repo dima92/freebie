@@ -1,0 +1,212 @@
+@use "../helpers" as *;
+@use "../variables" as *;
+
+.works {
+  padding-top: to-rem(164);
+  padding-bottom: to-rem(173);
+  background-color: $white-color;
+
+  @include respond-to("mobile") {
+    padding-block: to-rem(70);
+  }
+}
+
+.works__wrap {
+  display: flex;
+  gap: to-rem(5);
+
+  @include respond-to("tablet") {
+    flex-wrap: wrap;
+    gap: to-rem(40);
+  }
+}
+
+.works__left,
+.works__right {
+  width: 50%;
+
+  @include respond-to("tablet") {
+    width: 100%;
+  }
+}
+
+.works__right {
+  display: flex;
+  flex-direction: column;
+}
+
+.works__title {
+  margin-bottom: to-rem(20);
+}
+
+.works__list {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(100);
+
+  @include respond-to("tablet") {
+    margin-bottom: to-rem(30);
+    gap: to-rem(50);
+  }
+}
+
+.works__item {
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  gap: to-rem(20);
+
+  @include respond-to("mobile") {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+}
+
+.works__article {
+  grid-column: span 11;
+
+  &--right {
+    grid-column: 4 / -1;
+  }
+}
+
+.works__link {
+  padding: to-rem(5);
+  align-self: flex-end;
+  margin-top: auto;
+  color: $grey-dark-color;
+  font-family: $font-family;
+  font-size: to-rem(13);
+  transition: color $transition-duration ease-in-out;
+
+  @include hover {
+    color: $green-color;
+  }
+}
+
+.categories {
+  margin-bottom: to-rem(150);
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: to-rem(20);
+  row-gap: to-rem(10);
+
+  @include respond-to("tablet") {
+    margin-bottom: to-rem(40);
+  }
+}
+
+.categories__btn {
+  padding: to-rem(5) to-rem(10);
+  color: $grey-dark-color;
+  font-family: $second-family;
+  font-size: to-rem(13);
+  letter-spacing: 0.06em;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color $transition-duration ease-in-out;
+
+  @include hover {
+    color: $green-color;
+  }
+
+  &--active {
+    font-weight: 700;
+    color: $grey-dark-color;
+  }
+}
+
+.works-card {
+  display: flex;
+  flex-direction: column;
+  gap: to-rem(20);
+
+  &__top {
+    position: relative;
+  }
+
+  &__img {
+    min-height: 450px;
+    opacity: 0.4;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  &__title {
+    position: absolute;
+    bottom: to-rem(40);
+    right: to-rem(-120);
+    color: $grey-dark-color;
+    font-size: to-rem(48);
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    text-decoration-line: line-through;
+    text-decoration-color: transparent;
+    text-decoration-thickness: 2px;
+    transition: 0.5s ease-in;
+  }
+
+  &__title--right {
+    right: to-rem(-137);
+    max-width: to-rem(260);
+  }
+
+  &__title--left {
+    left: to-rem(-137);
+    max-width: to-rem(430);
+  }
+
+  & &__content--pl {
+    display: flex;
+    padding-left: 40%;
+    flex-direction: column;
+    gap: to-rem(20);
+  }
+
+  & &__content--pr {
+    display: flex;
+    padding-right: 40%;
+    padding-left: to-rem(6);
+    flex-direction: column;
+    gap: to-rem(20);
+    text-align: right;
+  }
+
+  &__name {
+    color: $grey-dark-color;
+    font-family: $second-family;
+    font-size: to-rem(18);
+    font-weight: 300;
+    letter-spacing: 1.152px;
+  }
+
+  &__text {
+    color: #c2c2c2;
+    font-family: $second-family;
+    font-size: to-rem(13);
+    font-weight: 300;
+    line-height: 23px;
+    letter-spacing: 0.832px;
+  }
+
+  &__link {
+    color: $grey-dark-color;
+    font-family: $second-family;
+    font-size: to-rem(13);
+    font-weight: 400;
+    letter-spacing: 0.832px;
+    text-decoration-line: line-through;
+    text-decoration-color: transparent;
+    text-decoration-thickness: 2px;
+    transition: 0.5s ease-in;
+  }
+
+  &:hover &__img {
+    opacity: 1;
+  }
+
+  &:hover &__link,
+  &:hover &__title {
+    text-decoration-color: $green-color;
+  }
+}

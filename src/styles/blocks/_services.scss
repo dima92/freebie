@@ -1,0 +1,132 @@
+@use "../helpers" as *;
+@use "../variables" as *;
+
+.services {
+  background-color: $bg-color;
+  padding-block: fluid(100, 50);
+  color: $grey-dark-color;
+
+  &__title {
+    position: relative;
+    font-family: $font-family;
+    font-weight: 700;
+    @include fluid-text(48, 26);
+    letter-spacing: 0.06em;
+    text-align: left;
+    margin-bottom: fluid(94, 35);
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: to-rem(-7);
+      left: 0;
+      width: 45px;
+      height: 2px;
+      background-color: $grey-dark-color;
+    }
+  }
+
+  &__grid {
+    @include grid(3, to-rem(28));
+
+    @include respond-to("tablet") {
+      grid-template-columns: 1fr;
+      gap: to-rem(25);
+    }
+  }
+}
+
+.service-card {
+  background-color: $white-color;
+  padding: to-rem(53) to-rem(44);
+  box-shadow: 0 to-rem(10) to-rem(30) rgba($black-color, 0.02);
+  @include flex(column, space-between, flex-start);
+  min-height: to-rem(260);
+  border-bottom: to-rem(3) solid transparent;
+  transition:
+    border-color $transition-duration ease-in-out,
+    transform $transition-duration ease-in-out;
+
+  &__header {
+    width: 100%;
+    @include flex(row, space-between, center);
+    margin-bottom: to-rem(20);
+  }
+
+  &__title {
+    position: relative;
+    font-family: $font-family;
+    font-weight: 300;
+    font-size: to-rem(20);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: to-rem(-15);
+      left: 0;
+      width: 35px;
+      height: 2px;
+      background-color: $grey-dark-color;
+    }
+  }
+
+  &__icon {
+    @include flex(center, center);
+    width: to-rem(50);
+    height: to-rem(50);
+    border: to-rem(1) solid transparent;
+    border-radius: 50%;
+    transition: border-color $transition-duration ease-in-out;
+
+    img,
+    svg {
+      width: to-rem(25);
+      height: to-rem(25);
+    }
+  }
+
+  &__text {
+    font-family: $second-family;
+    font-weight: 400;
+    font-size: to-rem(12);
+    line-height: 2.08;
+    letter-spacing: 0.08em;
+    color: $grey-text-color;
+    margin-bottom: to-rem(20);
+  }
+
+  &__link {
+    font-family: $font-family;
+    font-weight: 300;
+    font-size: to-rem(10);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba($grey-dark-color, 0.5);
+
+    @include hover {
+      color: $green-color;
+    }
+  }
+
+  &--active,
+  &:hover {
+    border-bottom-color: $green-light-color;
+    color: $green-light-color;
+
+    .service-card__title {
+      color: $grey-dark-color;
+    }
+
+    .service-card__icon {
+      border-color: $green-light-color;
+      color: $green-light-color;
+
+      svg,
+      img {
+        color: inherit;
+      }
+    }
+  }
+}

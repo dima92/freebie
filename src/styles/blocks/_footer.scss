@@ -1,0 +1,98 @@
+@use "../helpers" as *;
+@use "../variables" as *;
+
+.footer {
+  width: 100%;
+  color: rgba($white-color, 0.4);
+  font-family: $second-family;
+
+  &__top {
+    background-color: #2e2e2e;
+    height: to-rem(339);
+    @include flex(column, center, center);
+    border-bottom: to-rem(1) solid rgba($white-color, 0.05);
+
+    @include respond-to("tablet") {
+      height: auto;
+      padding-block: to-rem(50);
+    }
+  }
+
+  &__content {
+    @include flex(column, center, center);
+    width: 100%;
+  }
+
+  &__address {
+    @include flex(column, center, center);
+    margin-bottom: to-rem(35);
+  }
+
+  &__info-text {
+    font-size: to-rem(14);
+    line-height: 1.8;
+    letter-spacing: 0.04em;
+    text-align: center;
+    margin-bottom: to-rem(5);
+  }
+
+  &__contact-link {
+    color: inherit;
+    transition: color $transition-duration ease-in-out;
+
+    @include hover {
+      color: $green-color;
+    }
+  }
+
+  &__divider {
+    margin-inline: to-rem(8);
+    color: rgba($white-color, 0.2);
+  }
+
+  &__bottom {
+    background-color: $grey-dark-color;
+    padding-block: to-rem(30);
+    @include flex(row, center, center);
+  }
+
+  &__copy {
+    font-size: to-rem(13);
+    letter-spacing: 0.05em;
+    text-align: center;
+  }
+}
+
+.socials {
+  @include flex(row, center, center, to-rem(15));
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  &__link {
+    @include flex(row, center, center);
+    width: to-rem(42);
+    height: to-rem(42);
+    border: to-rem(1) solid rgba($white-color, 0.15);
+    border-radius: 50%;
+    color: rgba($white-color, 0.5);
+    transition:
+      color $transition-duration ease-in-out,
+      background-color $transition-duration ease-in-out,
+      border-color $transition-duration ease-in-out;
+
+    svg {
+      transition: transform $transition-duration ease-in-out;
+    }
+
+    @include hover {
+      color: $white-color;
+      background-color: $green-color;
+      border-color: $green-color;
+
+      svg {
+        transform: scale(1.1);
+      }
+    }
+  }
+}

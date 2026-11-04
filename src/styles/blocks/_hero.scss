@@ -1,0 +1,103 @@
+@use "../helpers" as *;
+@use "../variables" as *;
+
+.hero {
+  position: relative;
+  min-height: to-rem(904);
+  background-color: $grey-dark-color;
+  background-image: url("../../assets/images/hero-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: $white-color;
+  overflow: hidden;
+
+  &__container {
+    height: 100%;
+    min-height: to-rem(904);
+    padding-top: fluid(350, 140);
+    padding-bottom: to-rem(60);
+    @include flex(column, space-between, center);
+  }
+
+  &__slider {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .slider__track {
+    display: flex;
+    width: 100%;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  &__slide {
+    flex: 0 0 100%;
+    width: 100%;
+    @include flex(column, center, center);
+  }
+
+  &__content {
+    width: 100%;
+    max-width: to-rem(900);
+    @include flex(column, center, center);
+  }
+
+  &__title {
+    font-family: $font-family;
+    font-weight: 500;
+    @include fluid-text(72, 32, 1.2);
+    letter-spacing: 0.06em;
+    text-align: center;
+    margin-bottom: to-rem(24);
+    text-transform: uppercase;
+  }
+
+  &__text {
+    font-family: $second-family;
+    font-weight: 400;
+    @include fluid-text(20, 15, 1.6);
+    letter-spacing: 0.06em;
+    text-align: center;
+    color: rgba($white-color, 0.8);
+  }
+
+  &__slider-controls {
+    @include flex(row, center, center, to-rem(25));
+    margin-top: to-rem(40);
+    z-index: 10;
+  }
+
+  &__slider-btn {
+    position: relative;
+    font-family: $font-family;
+    font-weight: 700;
+    font-size: to-rem(18);
+    letter-spacing: 0.06em;
+    color: rgba($white-color, 0.44);
+    background: transparent;
+    border: none;
+    padding: to-rem(5) to-rem(10);
+    transition: color $transition-duration ease-in-out;
+
+    @include hover {
+      color: $white-color;
+    }
+
+    &--active {
+      color: $white-color;
+      font-size: to-rem(36);
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: to-rem(48);
+        height: to-rem(2);
+        background-color: $green-color;
+        pointer-events: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,156 @@
+@use "../helpers" as *;
+@use "../variables" as *;
+
+.about {
+  padding-top: fluid(149, 60);
+  padding-bottom: fluid(117, 60);
+  background-color: $white-color;
+
+  &__container {
+    position: relative;
+    @include flex(row, center, flex-start);
+
+    @include respond-to("tablet") {
+      flex-direction: column;
+      align-items: center;
+      gap: to-rem(40);
+    }
+  }
+
+  &__content {
+    position: absolute;
+    top: to-rem(70);
+    left: to-rem(25);
+    z-index: 3;
+
+    @include respond-to("tablet") {
+      position: static;
+      width: 100%;
+      max-width: to-rem(450);
+    }
+  }
+
+  &__title {
+    max-width: to-rem(280);
+    font-family: $second-family;
+    font-weight: 300;
+    @include fluid-text(42, 28);
+    letter-spacing: 0.06em;
+    color: $grey-light-color;
+    margin-bottom: to-rem(30);
+  }
+
+  &__desc {
+    position: relative;
+    max-width: to-rem(280);
+    font-family: $second-family;
+    font-size: to-rem(15);
+    font-weight: 300;
+    line-height: 1.67;
+    letter-spacing: 0.08em;
+    color: $grey-alt-color;
+    position: relative;
+
+    &--left {
+      padding-left: to-rem(33);
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: to-rem(15);
+        left: 0;
+        width: to-rem(20);
+        height: to-rem(2);
+        background-color: $grey-2-color;
+        opacity: 0.5;
+      }
+    }
+
+    &--right {
+      position: absolute;
+      bottom: to-rem(80);
+      right: to-rem(-20);
+      z-index: 10;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: to-rem(15);
+        left: to-rem(-27);
+        width: to-rem(20);
+        height: to-rem(2);
+        background-color: $grey-2-color;
+        opacity: 0.5;
+      }
+
+      @include respond-to("desktop-sm") {
+        right: to-rem(-20);
+      }
+
+      @include respond-to("tablet") {
+        position: static;
+        padding-left: to-rem(33);
+        &::before {
+          left: 0;
+        }
+      }
+    }
+  }
+
+  &__imgs {
+    position: relative;
+    width: 100%;
+    max-width: to-rem(775);
+
+    @include respond-to("tablet") {
+      width: 100%;
+      max-width: to-rem(560);
+      height: to-rem(420);
+      margin-left: 0;
+    }
+  }
+
+  &__decor {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-block;
+    width: to-rem(340);
+    height: to-rem(400);
+    background-color: $green-color;
+    opacity: 0.8;
+    z-index: 1;
+
+    @include respond-to("tablet") {
+      display: none;
+    }
+  }
+
+  &__image {
+    img {
+      max-width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    @include respond-to("tablet") {
+      position: static;
+      width: 100%;
+      height: to-rem(400);
+    }
+
+    &--main {
+      position: relative;
+      margin-bottom: to-rem(167);
+      z-index: 2;
+    }
+
+    &--secondary {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      opacity: 0.8;
+    }
+  }
+}
